@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.mapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="com.house.po.Collect">
+    <id column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="pubId" jdbcType="INTEGER" property="pubid" />
+    <result column="inserttime" jdbcType="TIMESTAMP" property="inserttime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    collectId, userId, pubId, inserttime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_house_collect
+    where collectId = #{collectid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_house_collect
+    where collectId = #{collectid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.house.po.Collect">
+    insert into tb_house_collect (collectId, userId, pubId, 
+      inserttime)
+    values (#{collectid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{pubid,jdbcType=INTEGER}, 
+      #{inserttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.house.po.Collect">
+    insert into tb_house_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        collectId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="pubid != null">
+        pubId,
+      </if>
+      <if test="inserttime != null">
+        inserttime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        #{collectid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="pubid != null">
+        #{pubid,jdbcType=INTEGER},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.house.po.Collect">
+    update tb_house_collect
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="pubid != null">
+        pubId = #{pubid,jdbcType=INTEGER},
+      </if>
+      <if test="inserttime != null">
+        inserttime = #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where collectId = #{collectid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.house.po.Collect">
+    update tb_house_collect
+    set userId = #{userid,jdbcType=INTEGER},
+      pubId = #{pubid,jdbcType=INTEGER},
+      inserttime = #{inserttime,jdbcType=TIMESTAMP}
+    where collectId = #{collectid,jdbcType=INTEGER}
+  </update>
+</mapper>

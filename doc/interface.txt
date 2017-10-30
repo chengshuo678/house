@@ -1,0 +1,92 @@
+-----------------------------------------------------------
+发布房源(GET)
+-----------------------------------------------------------
+house/pub/addHouse
+传入参数：
+	发布类型|pubtype|int|必填|1：合租，2：转租
+	发布标题|title|String|必填|
+	房屋面积|area|int|必填|
+	房屋省份|province|String|必填|
+	房屋城市|city|String|必填|
+	房屋县区|county|String|必填|
+	详细地址|info|String|必填|
+	房屋户型|housetype|String|必填|
+	价格|price|Decimal|必填|
+	价格类型|pricetype|int|必填|1：月度，2：年度，3：面议
+	招租限制|houselimit|String|必填|
+	联系方式|tel|String|必填|
+	联系人|telname|String|必填|
+	环境照片|image|String|必填|多个图片#分割
+	描述|description|String|必填|100字以内
+	发布人Id|userid|String|必填|
+
+
+传出参数(成功):
+{
+    "code": 200,
+    "msg": "",
+    "result": null
+}
+
+传出参数(失败):
+{
+    "code": 601,
+    "msg": "",
+    "result": null
+}
+
+传出参数(参数错误):
+{
+    "code": 600,
+    "msg": "",
+    "result": null
+}
+-------------------------------------------------
+新增/设置个人信息(GET)
+-------------------------------------------------
+house/user/addUser
+传入参数：
+	发布类型|username|int|必填|1：合租，2：转租
+	发布标题|nick|String|必填|
+	房屋面积|icon|int|必填|
+	房屋省份|wechat|String|必填|
+	房屋城市|school|String|必填|
+	房屋县区|studentId|String|必填|
+	详细地址|mobile|String|必填|
+	房屋户型|email|String|必填|
+
+传出参数(成功):
+{
+    "code": 200,
+    "msg": "",
+    "result": null
+}
+
+传出参数(失败):
+{
+    "code": 601,
+    "msg": "",
+    "result": null
+}
+
+传出参数(参数错误):
+{
+    "code": 600,
+    "msg": "",
+    "result": null
+}
+
+-------------------------------------------------
+收藏(GET)
+-------------------------------------------------
+house/collect/addCollect
+传入参数：
+	用户Id|userId|int|必填|
+	发布Id|pubId|int|必填|
+
+传出参数(成功):
+{
+    "code": 200,
+    "msg": "",
+    "result": null
+}

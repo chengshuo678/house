@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.mapper.PubMapper">
+  <resultMap id="BaseResultMap" type="com.house.po.Pub">
+    <id column="pubId" jdbcType="INTEGER" property="pubid" />
+    <result column="pubType" jdbcType="TINYINT" property="pubtype" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="info" jdbcType="VARCHAR" property="info" />
+    <result column="houseType" jdbcType="VARCHAR" property="housetype" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="priceType" jdbcType="TINYINT" property="pricetype" />
+    <result column="houseLimit" jdbcType="VARCHAR" property="houselimit" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="telName" jdbcType="VARCHAR" property="telname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="inserttime" jdbcType="TIMESTAMP" property="inserttime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="isExist" jdbcType="TINYINT" property="isexist" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pubId, pubType, title, area, province, city, county, info, houseType, price, priceType, 
+    houseLimit, tel, telName, image, userId, inserttime, updatetime, isExist, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_house_pub
+    where pubId = #{pubid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_house_pub
+    where pubId = #{pubid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.house.po.Pub">
+    insert into tb_house_pub (pubId, pubType, title, 
+      area, province, city, 
+      county, info, houseType, 
+      price, priceType, houseLimit, 
+      tel, telName, image, 
+      userId, inserttime, updatetime,
+      isExist, description)
+    values (#{pubid,jdbcType=INTEGER}, #{pubtype,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, 
+      #{area,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, #{housetype,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{pricetype,jdbcType=TINYINT}, #{houselimit,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{telname,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=INTEGER}, #{inserttime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isexist,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.house.po.Pub">
+    update tb_house_pub
+    set pubType = #{pubtype,jdbcType=TINYINT},
+      title = #{title,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      houseType = #{housetype,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      priceType = #{pricetype,jdbcType=TINYINT},
+      houseLimit = #{houselimit,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      telName = #{telname,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      inserttime = #{inserttime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      isExist = #{isexist,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR}
+
+    where pubId = #{pubid,jdbcType=INTEGER}
+  </update>
+</mapper>
